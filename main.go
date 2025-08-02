@@ -6,6 +6,7 @@ import (
 	"log"
 	"math"
 	"net/http"
+	"os"
 	"strconv"
 	"time"
 )
@@ -58,7 +59,18 @@ func calculateHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// ✅ Log to terminal
 	log.Printf("[%s] %s: %.2f %s %.2f = %.2f\n", time.Now().Format(time.RFC822), r.RemoteAddr, num1, op, num2, result)
+
+	// ✅ Append to log.txt
+	logLine := fmt.Sprintf("[%s] %.2f %s %.2f = %.2f\n", time.Now().Format("2006-01-02 15:04:05"), num1, op, num2, result)
+	f, err := openLogFile()
+	if err == nil {
+		defer f.Close()
+		f.WriteString(logLine)
+	}
+
+	// ✅ Return result
 	json.NewEncoder(w).Encode(Response{Result: result})
 }
 
@@ -86,4 +98,7 @@ func main() {
 
 	fmt.Println("✅ Server running at: http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
+}
+func openLogFile() (*os.File, error) {
+	return os.OpenFile("history/log.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 }
