@@ -1,0 +1,87 @@
+/* Reset + Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #111827;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container */
+.container {
+  background: #1f2937;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Heading */
+.container h1 {
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  color: #facc15;
+}
+
+/* Inputs & Select */
+input, select {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: none;
+  border-radius: 0.5rem;
+  background: #374151;
+  color: white;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+input:focus, select:focus {
+  background: #4b5563;
+  outline: none;
+}
+
+/* Button */
+button {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.75rem;
+  background: #10b981;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: #059669;
+  transform: translateY(-2px);
+}
+
+/* Result */
+.result {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+
+.result.success {
+  color: #34d399;
+}
+
+.result.error {
+  color: #f87171;
+}
